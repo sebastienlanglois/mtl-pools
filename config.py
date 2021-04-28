@@ -7,7 +7,7 @@ class Config(object):
 
     # User-defined
     schedules = ["Mardi 17:30 - 18:30",
-                 "Jeudi 17:30 - 18:30"]
+                 "Jeudi 13:00 - 14:00"]
     query = "Centre du plateau"
     delay_register_days = 2
     #
