@@ -29,29 +29,42 @@ if __name__ == "__main__":
         options.headless = True
 
         driver = webdriver.Firefox(options=options)
-        driver.get(Config.website_url) / time.sleep(5)
-        driver.find_element_by_id("u2000_btnSignIn").click() / time.sleep(2)
+        driver.get(Config.website_url)
+        time.sleep(5)
+        driver.find_element_by_id("u2000_btnSignIn").click()
+        time.sleep(2)
         driver.find_element_by_id("loginForm:username").send_keys(username)
-        driver.find_element_by_id("loginForm:password").send_keys(password) / time.sleep(2)
-        driver.find_element_by_id("loginForm:loginButton").click() / time.sleep(3)
+        driver.find_element_by_id("loginForm:password").send_keys(password)
+        time.sleep(2)
+        driver.find_element_by_id("loginForm:loginButton").click()
+        time.sleep(3)
 
         for attempt in range(0, 100):
-            response = driver.get((Config.table_activities_url + json.dumps(Config.params))) / time.sleep(5)
-            table = driver.find_element_by_id("u5200_tableTableActivitySearch") / time.sleep(2)
+            response = driver.get((Config.table_activities_url + json.dumps(Config.params)))
+            time.sleep(5)
+            table = driver.find_element_by_id("u5200_tableTableActivitySearch")
+            time.sleep(2)
             page_id = get_page_id(table, Config.schedule)
 
             if page_id is not None:
+                print('finding activity...')
                 driver.get(os.path.join(Config.specific_activity_prefix_url,
-                                        page_id)) / time.sleep(3)
+                                        page_id))
+                time.sleep(3)
                 try:
-                    driver.find_element_by_id("u5200_btnRegisterSecond").click() / time.sleep(3)
+                    driver.find_element_by_id("u5200_btnRegisterSecond").click()
+                    time.sleep(3)
                     try:
                         driver.find_element_by_id("u3600_btnRemove0")
                     except:
-                        driver.find_element_by_id("u3600_btnSelect0").click() / time.sleep(3)
-                    driver.find_element_by_id("u3600_btnCartMemberCheckout").click() / time.sleep(2)
-                    driver.find_element_by_id("u3600_btnCartShoppingCompleteStep").click() / time.sleep(2)
-                    driver.find_element_by_id("u3600_chkElectronicPaymentCondition").click() / time.sleep(2)
+                        driver.find_element_by_id("u3600_btnSelect0").click()
+                        time.sleep(3)
+                    driver.find_element_by_id("u3600_btnCartMemberCheckout").click()
+                    time.sleep(2)
+                    driver.find_element_by_id("u3600_btnCartShoppingCompleteStep").click()
+                    time.sleep(2)
+                    driver.find_element_by_id("u3600_chkElectronicPaymentCondition").click()
+                    time.sleep(2)
                     driver.find_element_by_id("u3600_btnCartPaymentCompleteStep").click()
                     break
                 except:
