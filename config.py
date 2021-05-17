@@ -8,7 +8,7 @@ class Config(object):
     # User-defined
     schedules = ["Mardi 17:30 - 18:30",
                  "Jeudi 13:00 - 14:00"]
-    query = "Centre du plateau"
+    query = "centre du plateau"
     delay_register_days = 2
     #
 
@@ -35,8 +35,7 @@ class Config(object):
     specific_activity_prefix_url = "https://loisirs.montreal.ca/IC3/#/U5200/view"
 
     params = {"filter": {"isCollapsed": 'false',
-                         "value": {"dayOfWeekId": day_of_week,
-                                   "canRegisterStatuses": "1"}},
+                         "value": {"dayOfWeekId": day_of_week}},
               "search": query,
               "sortable": {"isOrderAsc": 'true',
                            "column": "description"}
