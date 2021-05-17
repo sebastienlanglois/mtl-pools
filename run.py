@@ -26,7 +26,7 @@ if __name__ == "__main__":
         username, password = argv[1:]
 
         options = Options()
-        options.headless = False
+        options.headless = True
 
         driver = webdriver.Firefox(options=options)
         driver.get(Config.website_url)
